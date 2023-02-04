@@ -5,6 +5,7 @@ pluginManagement {
         mavenCentral()
     }
 }
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -13,5 +14,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Pokemon"
-include ':app'
-include ':zoogle_analytics'
+include(":app", ":zoogle_analytics", ":networking")
