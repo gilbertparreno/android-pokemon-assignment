@@ -11,6 +11,4 @@
     android:paddingVertical="4dp"
     android:textColor="@color/white"
     android:textSize="18sp"
-    tools:text="type">
-
-</TextView>
+    tools:text="type" />

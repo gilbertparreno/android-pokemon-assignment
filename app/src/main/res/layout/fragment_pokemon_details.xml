@@ -111,5 +111,4 @@
         app:layout_constraintTop_toBottomOf="@id/textViewHeightLabel"
         tools:text="75 CM" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

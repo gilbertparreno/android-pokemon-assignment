@@ -4,5 +4,4 @@
         <!-- color used by navigation icon and overflow icon -->
         <item name="colorOnPrimary">@color/white</item>
     </style>
-
 </resources>

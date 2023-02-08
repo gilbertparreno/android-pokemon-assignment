@@ -1,4 +1,4 @@
-package com.zapmap.pokemon
+package com.zapmap.pokemon.analytics
 
 import android.util.Log
 

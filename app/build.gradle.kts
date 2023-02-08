@@ -8,6 +8,7 @@ plugins {
     id(Dependencies.AppPlugins.jetbrainsKotlinAndroid)
     id(Dependencies.AppPlugins.kotlinKapt)
     id(Dependencies.AppPlugins.hiltAndroid)
+    id(Dependencies.AppPlugins.navigationSafeargsKotlin)
 }
 
 android {

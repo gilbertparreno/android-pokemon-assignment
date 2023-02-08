@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Pokemon</string>
+    <string name="error_no_network_tap_to_retry_message">Make sure you\'re connected to internet.\nTap to retry.</string>
+    <string name="error_no_network_title">Not connected ot internet</string>
+    <string name="error_no_network_message">Make sure you\'re connected to internet.</string>
+    <string name="retry">Retry</string>
+    <string name="dismiss">Dismiss</string>
 </resources>

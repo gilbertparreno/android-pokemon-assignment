@@ -6,9 +6,11 @@ object Dependencies {
         const val hiltAndroid = "dagger.hilt.android.plugin"
         const val kotlinKapt = "kotlin-kapt"
         const val androidLibrary = "com.android.library"
+        const val navigationSafeargsKotlin = "androidx.navigation.safeargs.kotlin"
     }
 
     object GradlePlugin {
+        const val navigationSafeArgsGradle = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationSafeArgsGradle}"
         const val hiltAndroid = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
 
         const val application = "com.android.application"
@@ -21,7 +23,9 @@ object Dependencies {
     private const val material = "com.google.android.material:material:${Versions.material}"
     private const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     private const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityKtx}"
-    private const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
+    private const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    private const val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    private const val materialDialog = "com.afollestad.material-dialogs:lifecycle:${Versions.materialDialog}"
 
     // image loader
     private const val coil = "io.coil-kt:coil:${Versions.coil}"
@@ -53,7 +57,9 @@ object Dependencies {
         material,
         constraintLayout,
         activityKtx,
-        fragmentKtx,
+        navigationFragmentKtx,
+        navigation,
+        materialDialog,
         coil,
         retrofit,
         okhttp3,
