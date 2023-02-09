@@ -21,14 +21,14 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class MainViewModelTest {
+class PokemonListViewModelTest {
 
     @get:Rule val instantTestExecutorRule = InstantTaskExecutorRule()
     @get:Rule val testCoroutineRule = TestCoroutineRule()
 
     @MockK private lateinit var pokemonApiClient: PokemonApiClient
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: PokemonListViewModel
     private lateinit var testCoroutineContextProvider: TestCoroutineContextProvider
     private lateinit var testMainListStatusData: TestObserver<TaskStatus<List<PokemonListItem>>>
 
@@ -37,7 +37,7 @@ class MainViewModelTest {
         mockkObject(PokemonListFactory)
         MockKAnnotations.init(this)
         testCoroutineContextProvider = TestCoroutineContextProvider(testCoroutineRule)
-        viewModel = MainViewModel(
+        viewModel = PokemonListViewModel(
             pokemonApiClient,
             testCoroutineContextProvider
         ).apply {

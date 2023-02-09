@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import com.zapmap.pokemon.core.base.BaseRecyclerViewAdapter
-import com.zapmap.pokemon.databinding.ListItemTypeBinding
+import com.zapmap.pokemon.databinding.ViewPokemonDetailsTypeBinding
 import com.zapmap.pokemon.ui.pokemonDetails.adapters.callbacks.PokemonDetailsTypeAdapterDiffUtil
 
 class PokemonDetailsTypeAdapter(
@@ -27,7 +27,7 @@ class PokemonDetailsTypeAdapter(
         parent: ViewGroup,
         viewType: Int
     ) = ViewHolder(
-        ListItemTypeBinding.inflate(
+        ViewPokemonDetailsTypeBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -39,6 +39,6 @@ class PokemonDetailsTypeAdapter(
         item: String,
         position: Int
     ) {
-        (viewHolder.viewBinding as ListItemTypeBinding).textViewType.text = item
+        (viewHolder.viewBinding as ViewPokemonDetailsTypeBinding).textViewType.text = item
     }
 }

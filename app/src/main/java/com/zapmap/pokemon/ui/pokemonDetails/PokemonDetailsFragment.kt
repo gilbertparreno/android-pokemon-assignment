@@ -14,8 +14,8 @@ import com.zapmap.pokemon.databinding.FragmentPokemonDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PokemonDetailsFragment : BaseFragment<FragmentPokemonDetailsBinding, PokemonDetailsView>(),
-    PokemonDetailsViewDelegate {
+class PokemonDetailsFragment : BaseFragment<FragmentPokemonDetailsBinding, PokemonDetailsViewHandler>(),
+    PokemonDetailsViewHandlerDelegate {
 
     private val arguments: PokemonDetailsFragmentArgs by navArgs()
     private val viewModel: PokemonDetailsViewModel by viewModels()
@@ -23,10 +23,10 @@ class PokemonDetailsFragment : BaseFragment<FragmentPokemonDetailsBinding, Pokem
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPokemonDetailsBinding
         get() = FragmentPokemonDetailsBinding::inflate
 
-    override fun onCreateView(viewBindingRoot: View) = PokemonDetailsView()
+    override fun onCreateView(viewBindingRoot: View) = PokemonDetailsViewHandler()
 
     override fun onViewCreated(
-        viewHelper: PokemonDetailsView,
+        viewHelper: PokemonDetailsViewHandler,
         savedInstanceState: Bundle?
     ) {
         viewHelper.delegate = this
@@ -39,7 +39,7 @@ class PokemonDetailsFragment : BaseFragment<FragmentPokemonDetailsBinding, Pokem
             when (it) {
                 is Loading -> {}
                 is SuccessWithResult -> {
-                    rootView.setUpPokemonDetails(it.result)
+                    fragmentViewHandler.setUpPokemonDetails(it.result)
                 }
                 is FailureWithException -> {
                     Toast.makeText(

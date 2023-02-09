@@ -13,21 +13,21 @@ import com.zapmap.pokemon.core.base.BaseFragment
 import com.zapmap.pokemon.core.entities.TaskStatus.FailureWithException
 import com.zapmap.pokemon.core.entities.TaskStatus.SuccessWithResult
 import com.zapmap.pokemon.core.helpers.DialogHelper
-import com.zapmap.pokemon.databinding.FragmentMainBinding
+import com.zapmap.pokemon.databinding.FragmentPokemonListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : BaseFragment<FragmentMainBinding, MainView>(), MainViewDelegate {
+class PokemonListFragment : BaseFragment<FragmentPokemonListBinding, PokemonListViewHandler>(), PokemonListViewHandlerDelegate {
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: PokemonListViewModel by viewModels()
 
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMainBinding
-        get() = FragmentMainBinding::inflate
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPokemonListBinding
+        get() = FragmentPokemonListBinding::inflate
 
-    override fun onCreateView(viewBindingRoot: View) = MainView()
+    override fun onCreateView(viewBindingRoot: View) = PokemonListViewHandler()
 
     override fun onViewCreated(
-        viewHelper: MainView,
+        viewHelper: PokemonListViewHandler,
         savedInstanceState: Bundle?
     ) {
         viewHelper.delegate = this
@@ -39,10 +39,10 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainView>(), MainViewDele
         viewModel.pokemonListEvent.observe(this) {
             when (it) {
                 is SuccessWithResult -> {
-                    rootView.addItems(it.result)
+                    fragmentViewHandler.addItems(it.result)
                 }
                 is FailureWithException -> {
-                    if (!rootView.showErrorMessage()) {
+                    if (!fragmentViewHandler.showErrorMessage()) {
                         DialogHelper.showDialog(
                             context = requireContext(),
                             lifecycleOwner = viewLifecycleOwner,
@@ -75,7 +75,7 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainView>(), MainViewDele
             )
         )
         findNavController().navigate(
-            MainFragmentDirections.mainToPokemonDetails(pokemonId = id)
+            PokemonListFragmentDirections.mainToPokemonDetails(pokemonId = id)
         )
     }
 }

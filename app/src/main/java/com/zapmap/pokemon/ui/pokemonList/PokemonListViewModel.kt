@@ -14,7 +14,7 @@ import kotlinx.coroutines.Job
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class PokemonListViewModel @Inject constructor(
     private val pokemonApiClient: PokemonApiClient,
     private val coroutineContextProvider: CoroutineContextProvider
 ) : ViewModel() {

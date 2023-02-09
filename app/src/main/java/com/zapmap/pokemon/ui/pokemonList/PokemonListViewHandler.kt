@@ -2,20 +2,20 @@ package com.zapmap.pokemon.ui.pokemonList
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.zapmap.pokemon.core.base.BaseFragmentView
-import com.zapmap.pokemon.databinding.FragmentMainBinding
+import com.zapmap.pokemon.core.base.BaseFragmentViewHandler
+import com.zapmap.pokemon.databinding.FragmentPokemonListBinding
 import com.zapmap.pokemon.ui.pokemonList.adapters.PokemonListAdapter
 import com.zapmap.pokemon.ui.pokemonList.entities.PokemonListItem
 import com.zapmap.pokemon.ui.pokemonList.entities.PokemonListItem.*
 
-interface MainViewDelegate {
+interface PokemonListViewHandlerDelegate {
     fun onLoadMore(nextOffset: Int?)
     fun onOpenPokemonDetails(id: Int)
 }
 
-class MainView : BaseFragmentView<FragmentMainBinding>() {
+class PokemonListViewHandler : BaseFragmentViewHandler<FragmentPokemonListBinding>() {
 
-    var delegate: MainViewDelegate? = null
+    var delegate: PokemonListViewHandlerDelegate? = null
 
     private val pokemonAdapter = PokemonListAdapter(
         onRetry = { nextOffset ->

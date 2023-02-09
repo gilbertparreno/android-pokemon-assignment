@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/fragmentMain"
-        android:name="com.zapmap.pokemon.ui.pokemonList.MainFragment"
+        android:name="com.zapmap.pokemon.ui.pokemonList.PokemonListFragment"
         android:label="main"
-        tools:layout="@layout/fragment_main">
+        tools:layout="@layout/fragment_pokemon_list">
 
         <action
             android:id="@+id/mainToPokemonDetails"
@@ -21,7 +21,7 @@
         android:id="@+id/fragmentPokemonDetails"
         android:name="com.zapmap.pokemon.ui.pokemonDetails.PokemonDetailsFragment"
         android:label="pokemonDetails"
-        tools:layout="@layout/fragment_contributors_details">
+        tools:layout="@layout/fragment_pokemon_details">
 
         <argument
             android:name="pokemonId"

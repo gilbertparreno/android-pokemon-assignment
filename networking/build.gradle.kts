@@ -14,11 +14,7 @@ android {
     compileSdk = Configurations.compileSdk
 
     defaultConfig {
-        buildConfigField(
-            "String",
-            "POKEMON_API_URI",
-            "\"https://pokeapi.co/api/v2/\""
-        )
+        buildConfigField("String", "POKEMON_API_URI", "\"https://pokeapi.co/api/v2/\"")
         minSdk = Configurations.minSdk
         targetSdk = Configurations.targetSdk
 

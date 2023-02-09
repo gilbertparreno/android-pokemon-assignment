@@ -7,7 +7,7 @@ import com.zapmap.pokemon.R
 import com.zapmap.pokemon.core.base.BaseRecyclerViewAdapter
 import com.zapmap.pokemon.core.extensions.runDelayed
 import com.zapmap.pokemon.core.extensions.setDebounceClickListener
-import com.zapmap.pokemon.databinding.ListItemPokemonBinding
+import com.zapmap.pokemon.databinding.ViewPokemonListItemBinding
 import com.zapmap.pokemon.databinding.ViewPokemonListLoadingMoreItemBinding
 import com.zapmap.pokemon.databinding.ViewPokemonListRetryBinding
 import com.zapmap.pokemon.ui.pokemonList.adapters.callbacks.PokemonListAdapterDiffUtil
@@ -68,7 +68,7 @@ class PokemonListAdapter(
                     parent,
                     false
                 )
-                else -> ListItemPokemonBinding.inflate(
+                else -> ViewPokemonListItemBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -92,7 +92,7 @@ class PokemonListAdapter(
                 }
             }
             is PokemonItem -> {
-                with(viewHolder.viewBinding as ListItemPokemonBinding) {
+                with(viewHolder.viewBinding as ViewPokemonListItemBinding) {
                     textViewName.text = item.name
                     root.setDebounceClickListener {
                         onItemClicked?.invoke(item.id)
@@ -107,7 +107,7 @@ class PokemonListAdapter(
         return when (items[position]) {
             is LoadingMoreItem -> R.layout.view_pokemon_list_loading_more_item
             is RetryItem -> R.layout.view_pokemon_list_retry
-            else -> R.layout.list_item_pokemon
+            else -> R.layout.view_pokemon_list_item
         }
     }
 }

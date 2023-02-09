@@ -1,5 +1,6 @@
 package com.zapmap.pokemon.ui.pokemonList.factories
 
+import com.zapmap.pokemon.core.extensions.toSentenceCase
 import com.zapmap.pokemon.networking.BuildConfig
 import com.zapmap.pokemon.networking.entities.PokemonsResponse
 import com.zapmap.pokemon.ui.pokemonList.entities.PokemonListItem
@@ -20,7 +21,7 @@ object PokemonListFactory {
                 )
                 val id = trimmedUrl.substring(0, trimmedUrl.length - 1).toInt()
                 PokemonItem(
-                    name = it.name,
+                    name = it.name.toSentenceCase(),
                     id = id
                 )
             }

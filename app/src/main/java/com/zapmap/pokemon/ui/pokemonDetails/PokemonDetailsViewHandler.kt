@@ -1,18 +1,18 @@
 package com.zapmap.pokemon.ui.pokemonDetails
 
 import coil.load
-import com.zapmap.pokemon.core.base.BaseFragmentView
+import com.zapmap.pokemon.core.base.BaseFragmentViewHandler
 import com.zapmap.pokemon.databinding.FragmentPokemonDetailsBinding
 import com.zapmap.pokemon.ui.pokemonDetails.adapters.PokemonDetailsTypeAdapter
 import com.zapmap.pokemon.ui.pokemonDetails.entities.PokemonDetails
 
-interface PokemonDetailsViewDelegate {
+interface PokemonDetailsViewHandlerDelegate {
     fun onBackPressed()
 }
 
-class PokemonDetailsView : BaseFragmentView<FragmentPokemonDetailsBinding>() {
+class PokemonDetailsViewHandler : BaseFragmentViewHandler<FragmentPokemonDetailsBinding>() {
 
-    var delegate: PokemonDetailsViewDelegate? = null
+    var delegate: PokemonDetailsViewHandlerDelegate? = null
 
     private val detailsTypeAdapter = PokemonDetailsTypeAdapter()
 

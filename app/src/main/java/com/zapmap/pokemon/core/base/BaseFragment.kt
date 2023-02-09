@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment<VB : ViewBinding, V : BaseFragmentView<VB>> : Fragment() {
+abstract class BaseFragment<VB : ViewBinding, V : BaseFragmentViewHandler<VB>> : Fragment() {
 
     abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> VB
     abstract fun onCreateView(viewBindingRoot: View): V
@@ -18,7 +18,7 @@ abstract class BaseFragment<VB : ViewBinding, V : BaseFragmentView<VB>> : Fragme
 
     abstract fun observeChanges()
 
-    lateinit var rootView: V
+    lateinit var fragmentViewHandler: V
     var isViewReinitialized = true
 
     private var viewBinding: VB? = null
@@ -28,16 +28,16 @@ abstract class BaseFragment<VB : ViewBinding, V : BaseFragmentView<VB>> : Fragme
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewBinding = if (this::rootView.isInitialized && rootView.isViewBindingInitialized()) {
+        viewBinding = if (this::fragmentViewHandler.isInitialized && fragmentViewHandler.isViewBindingInitialized()) {
             isViewReinitialized = false
-            rootView.viewBinding
+            fragmentViewHandler.viewBinding
         } else {
             isViewReinitialized = true
             bindingInflater.invoke(inflater, container, false)
         }
-        if (!this::rootView.isInitialized || rootView.viewBinding != viewBinding) {
-            rootView = onCreateView(viewBinding!!.root)
-            rootView.viewBinding = viewBinding!!
+        if (!this::fragmentViewHandler.isInitialized || fragmentViewHandler.viewBinding != viewBinding) {
+            fragmentViewHandler = onCreateView(viewBinding!!.root)
+            fragmentViewHandler.viewBinding = viewBinding!!
         }
         return viewBinding!!.root
     }
@@ -48,7 +48,7 @@ abstract class BaseFragment<VB : ViewBinding, V : BaseFragmentView<VB>> : Fragme
     ) {
         super.onViewCreated(view, savedInstanceState)
         if (isViewReinitialized) {
-            onViewCreated(rootView, savedInstanceState)
+            onViewCreated(fragmentViewHandler, savedInstanceState)
         }
         observeChanges()
     }
