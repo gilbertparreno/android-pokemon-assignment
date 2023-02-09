@@ -19,6 +19,11 @@ object Versions {
 
     // unit testing
     const val testJUnit = "4.13.2"
+    const val ioMock = "1.13.4"
+    const val liveDataTest = "1.3.0"
+    const val coroutineTest = "1.6.4"
+    const val mockitoCore = "3.12.4"
+    const val coreTesting = "2.1.0"
 
     // UI testing
     const val testExt = "1.1.5"

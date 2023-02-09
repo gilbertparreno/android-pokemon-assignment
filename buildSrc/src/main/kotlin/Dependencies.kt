@@ -46,6 +46,11 @@ object Dependencies {
 
     // unit testing
     private const val testJUnit = "junit:junit:${Versions.testJUnit}"
+    private const val ioMock = "io.mockk:mockk:${Versions.ioMock}"
+    private const val liveDataTest = "com.jraska.livedata:testing-ktx:${Versions.liveDataTest}"
+    private const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutineTest}"
+    private const val mockitoCore = "org.mockito:mockito-core:${Versions.mockitoCore}"
+    private const val coreTesting = "androidx.arch.core:core-testing:${Versions.coreTesting}"
 
     // UI testing
     private const val testExt = "androidx.test.ext:junit:${Versions.testExt}"
@@ -92,7 +97,14 @@ object Dependencies {
         appCompat,
         material
     )
-    val testDependencies = listOf(testJUnit)
+    val testDependencies = listOf(
+        testJUnit,
+        ioMock,
+        liveDataTest,
+        coroutineTest,
+        mockitoCore,
+        coreTesting
+    )
     val androidTestDependencies = listOf(
         testExt,
         espresso
