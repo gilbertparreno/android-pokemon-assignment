@@ -10,11 +10,8 @@ import com.zapmap.pokemon.ui.pokemonDetails.entities.PokemonDetails
 import com.zapmap.pokemon.ui.pokemonDetails.factories.PokemonDetailsFactory
 import com.zapmap.pokemon.utils.TestCoroutineRule
 import com.zapmap.pokemon.utils.providers.TestCoroutineContextProvider
-import io.mockk.MockKAnnotations
-import io.mockk.coEvery
-import io.mockk.coVerifyOrder
+import io.mockk.*
 import io.mockk.impl.annotations.MockK
-import io.mockk.mockkObject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Rule
@@ -76,7 +73,7 @@ class PokemonDetailsViewModelTest {
         val error = Error("This is a test exception")
         coEvery { pokemonApiClient.fetchPokemonDetails(1) } throws error
         viewModel.getPokemonDetails(1)
-        coVerifyOrder { pokemonApiClient.fetchPokemonDetails(1) }
+        coVerify { pokemonApiClient.fetchPokemonDetails(1) }
         testPokemonDetailsStatusData.assertValue(TaskStatus.failure(error))
     }
 }
